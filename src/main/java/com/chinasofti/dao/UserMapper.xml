@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        <mapper namespace="com.chinasofti.dao.UserMapper">
+    <resultMap id="user" type="com.chinasofti.pojo.User">
+        <result column="USER_NAME" property="userName"></result>
+        <result column="USER_PASS" property="passWord"></result>
+        <result column="SEX" property="sex"></result>
+    </resultMap>
+    <insert id="register" parameterType="com.chinasofti.pojo.User">
+        INSERT INTO T_USER VALUES (#{userName},#{passWord},#{sex})
+    </insert>
+    <select id="login" resultMap="user">
+        SELECT * FROM T_USER WHERE USER_NAME=#{userName} AND USER_PASS=#{passWord}
+    </select>
+</mapper>
